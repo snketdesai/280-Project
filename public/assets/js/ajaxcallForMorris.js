@@ -80,7 +80,7 @@ function getData(options)
 	$.ajax(
             {
     type: "GET",
-    url: "http://www.quandl.com/api/v1/datasets/BCHAIN/MKTCP.json?rows=1096",
+    url: "http://www.quandl.com/api/v1/datasets/BCHAIN/MKTCP.json?rows=1096&auth_token=rxC5WhqoTPMsxy5r_xew",
     dataType: 'json',
     async: false,
     data: '{}',
@@ -109,7 +109,7 @@ function getData(options)
 //http://www.quandl.com/api/v1/datasets/BAVERAGE/USD.json?rows=10
 function genrateBTctoUSD() {
 
-    $.getJSON('http://www.quandl.com/api/v1/datasets/BAVERAGE/USD.json?rows=25', 
+    $.getJSON('http://www.quandl.com/api/v1/datasets/BAVERAGE/USD.json?rows=25&auth_token=rxC5WhqoTPMsxy5r_xew', 
     	function (data) {
     	
         // Create the chart
