@@ -287,7 +287,7 @@
               <!-- page start-->
               <div id="morris">
                   <div class="row mt">
-                      <div class="col-lg-6">
+                  <!--     <div class="col-lg-6">
                           <div class="content-panel">
                               <h4><i class="fa fa-angle-right"></i> Chart Example 1</h4>
                               <div class="panel-body">
@@ -321,7 +321,19 @@
                               </div>
                           </div>
                       </div>
+                      -->
+                      <div class="col-lg-6"> 
+                      	<div class="content-panel">
+                      	<h4><i class="fa fa-angle-right"></i> Chart Example 4</h4>
+                              <div class="panel-body">
+                                  <div id="gr"></div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
+                  </div>
+                  
+                  
               </div>
               <!-- page end-->
           </section>
@@ -350,18 +362,18 @@
 
     <!--common script for all pages-->
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-    <script src="assets/js/common-scripts.js"></script>
+	<!--  <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+    <script src="assets/js/common-scripts.js"></script>-->
 
     <!--script for this page-->
-    <script src="assets/js/morris-conf.js"></script>
-    
+   <!--   <script src="assets/js/morris-conf.js"></script>-->
+ <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+   <script src="assets/js/ajaxcallForMorris.js"></script> 
   <script>
       //custom select box
 
-      $(function(){
-          $('select.styled').customSelect();
-      });
+     
 
   </script>
 

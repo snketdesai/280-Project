@@ -15,14 +15,14 @@ var Script = function () {
            {"period": "2006 Q4", "licensed": 3245, "sorned": null},
            {"period": "2005 Q4", "licensed": 3289, "sorned": null}
       ];
-      Morris.Line({
+    (  Morris.Line({
         element: 'hero-graph',
         data: tax_data,
         xkey: 'period',
         ykeys: ['licensed', 'sorned'],
         labels: ['Licensed', 'Off the road'],
         lineColors:['#4ECDC4','#ed5565']
-      });
+      }));
 
       Morris.Donut({
         element: 'hero-donut',
