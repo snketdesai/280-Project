@@ -1,8 +1,12 @@
 #!/bin/env node
 //  OpenShift sample Node application
-var express = require('express');
-var fs      = require('fs');
-
+var express = require('express')
+  , routes = require('./routes')
+  , user = require('./routes/user')
+  , http = require('http')
+  , path = require('path')
+  , request = require('request')
+  , cors = require('cors');
 
 /**
  *  Define the sample application.
@@ -22,8 +26,8 @@ var SampleApp = function() {
      */
     self.setupVariables = function() {
         //  Set the environment variables we need.
-        self.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
-        self.port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+        self.ipaddress = process.env.OPENSHIFT_NODEJS_IP || process.env.IP;
+        self.port      = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080;
 
         if (typeof self.ipaddress === "undefined") {
             //  Log errors on OpenShift but continue w/ 127.0.0.1 - this
@@ -32,20 +36,6 @@ var SampleApp = function() {
             self.ipaddress = "127.0.0.1";
         };
     };
-
-
-    /**
-     *  Populate the cache.
-     */
-    self.populateCache = function() {
-        if (typeof self.zcache === "undefined") {
-            self.zcache = { 'index.html': '' };
-        }
-
-        //  Local cache for static content.
-        self.zcache['index.html'] = fs.readFileSync('./index.html');
-    };
-
 
     /**
      *  Retrieve entry (content) from cache.
@@ -89,36 +79,42 @@ var SampleApp = function() {
     /*  App server functions (main app logic here).                       */
     /*  ================================================================  */
 
-    /**
-     *  Create the routing table entries + handlers for the application.
-     */
-    self.createRoutes = function() {
-        self.routes = { };
-
-        self.routes['/asciimo'] = function(req, res) {
-            var link = "http://i.imgur.com/kmbjB.png";
-            res.send("<html><body><img src='" + link + "'></body></html>");
-        };
-
-        self.routes['/'] = function(req, res) {
-            res.setHeader('Content-Type', 'text/html');
-            res.send(self.cache_get('index.html') );
-        };
-    };
-
 
     /**
      *  Initialize the server (express) and create the routes and register
      *  the handlers.
      */
     self.initializeServer = function() {
-        self.createRoutes();
-        self.app = express.createServer();
+        self.app = express();
 
-        //  Add handlers for the app (from the routes).
-        for (var r in self.routes) {
-            self.app.get(r, self.routes[r]);
+        // all environments
+        self.app.set('views', __dirname + '/public');
+        self.app.set('view engine', 'ejs');
+        //self.app.use(express.logger('dev'));
+        self.app.use(express.bodyParser());
+        self.app.use(express.methodOverride());
+        self.app.use(self.app.router);
+        self.app.use(cors());
+        self.app.use(express.static(path.join(__dirname, 'public')));
+
+        // development only
+        if ('development' == self.app.get('env')) {
+          self.app.use(express.errorHandler());
         }
+
+        self.app.get('/getBitcoinChart',function(req,response){
+            //http://api.bitcoincharts.com/v1/markets.json
+            request({
+                url: 'http://api.bitcoincharts.com/v1/markets.json',
+                json: true
+            }, function (error, res, body) {
+
+                if (!error && res.statusCode === 200) {
+                    console.log(body); // Print the json response
+                    response.send(body);
+                }
+            })
+        });
     };
 
 
@@ -127,7 +123,6 @@ var SampleApp = function() {
      */
     self.initialize = function() {
         self.setupVariables();
-        self.populateCache();
         self.setupTerminationHandlers();
 
         // Create the express server and routes.
@@ -156,4 +151,3 @@ var SampleApp = function() {
 var zapp = new SampleApp();
 zapp.initialize();
 zapp.start();
-
