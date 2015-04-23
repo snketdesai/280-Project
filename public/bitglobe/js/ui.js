@@ -37,8 +37,7 @@ var UI = (function() {
 
     var write = function(message, style, type) {
         var append = function(src, elm) {
-            // remove old messages when there are too many present - avoid 
-            // consuming too much memory...
+
             if (++src.dataset.count > 20) {
                 src.removeChild(src.children[0]);
                 src.dataset.count--;
@@ -51,11 +50,7 @@ var UI = (function() {
             p.className = style;
         }
         p.textContent = message;
-        if (type == 'geo') {
-          //  append(geo_output, p);
-        } else {
-            //append(ws_output, p);
-        }
+        
     };
 
     return init();

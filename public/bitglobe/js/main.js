@@ -11,7 +11,6 @@
             message.className = 'error';
             message.innerHTML = 'Either your graphics card or your browser does not support WebGL :(<br /><a href="http://www.khronos.org/webgl/wiki_1_15/index.php/Getting_a_WebGL_Implementation">View a list</a> of WebGL compatible browsers.';
             document.body.appendChild(message);
-            // force background to remove loading image
             document.body.style.background = '#000';
             return;
         }
