@@ -15,12 +15,12 @@
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/flaticon.css">
     <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
     
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
-
     <script src="assets/js/chart-master/Chart.js"></script>
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -294,38 +294,43 @@
                   	<div class="row mtbox">
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
-					  			<span class="li_heart"></span>
-					  			<h3>933</h3>
+                      <!-- <span class="li_stack"></span> -->
+                      <span class="glyph-icon flaticon-pound12"></span>
+                      <h3 id="gbp">155.17</h3>
                   			</div>
-					  			<p>933 People liked your page the last 24hs. Whoohoo!</p>
+					  			<p>1 Bitcoin against British Pound.</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_cloud"></span>
-					  			<h3>+48</h3>
+					  			<!-- <span class="li_cloud"></span> -->
+                  <span class="glyph-icon flaticon-euro30"></span>
+					  			<h3 id="eur">217.82</h3>
                   			</div>
-					  			<p>48 New files were added in your cloud storage.</p>
+					  			<p>1 Bitcoin against Euro.</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_stack"></span>
-					  			<h3>23</h3>
+					  			        <!-- <span class="li_heart"></span> -->
+                        <span class="glyph-icon flaticon-dollar98"></span>
+                        <h3 id="usd">233.01</h3>
                   			</div>
-					  			<p>You have 23 unread messages in your inbox.</p>
+					  			<p>1 Bitcoin against British U.S. Dollor.</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_news"></span>
-					  			<h3>+10</h3>
+					  			<!-- <span class="li_news"></span> -->
+                  <span class="glyph-icon flaticon-india1"></span>
+					  			<h3 id="inr">14679.93</h3>
                   			</div>
-					  			<p>More than 10 news were added in your reader.</p>
+					  			<p>1 Bitcoin against Indian Rupee.</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_data"></span>
-					  			<h3>OK!</h3>
+					  			<!-- <span class="li_data"></span> -->
+                  <span class="glyph-icon flaticon-yen19"></span>
+					  			<h3 id="jpy">27939.20</h3>
                   			</div>
-					  			<p>Your server is working perfectly. Relax & enjoy.</p>
+					  			<p>1 Bitcoin against Japanese Yen.</p>
                   		</div>
                   	
                   	</div><!-- /row mt -->	
@@ -357,7 +362,7 @@
 										];
 										var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
 								</script>
-	                      	</div><! --/grey-panel -->
+	                      	</div><!-- /grey-panel -->
                       	</div><!-- /col-md-4-->
                       	
 
@@ -581,7 +586,7 @@
     <!--script for this page-->
     <script src="assets/js/sparkline-chart.js"></script>    
 	<script src="assets/js/zabuto_calendar.js"></script>	
-	
+	<script src="assets/js/bitcoin_currency.js"></script> 
 	<script type="text/javascript">
        /* $(document).ready(function () {
         var unique_id = $.gritter.add({
@@ -637,7 +642,11 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
-  
-
+ <!--  
+<script type="text/javascript" src="https://blockchain.info/stats?format=json&jsonp=myCallback">
+  function myCallback(data){
+    alert(data);
+  }
+</script> -->
   </body>
 </html>
