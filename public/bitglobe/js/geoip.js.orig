@@ -8,6 +8,10 @@ var GeoIP = function() {
     var callback;
 
     var init = function() {
+<<<<<<< HEAD
+        
+=======
+>>>>>>> 2856766734a6035ed9766b6c588685c2a18e3299
         intervalID = setInterval(unQueue, 1000);
         return {
             'queue': ipQueue
