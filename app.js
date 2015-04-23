@@ -8,6 +8,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
+  , request = require('request')
   , cors = require('cors');
 
 var app = express();
@@ -35,7 +36,19 @@ if ('development' == app.get('env')) {
 // });
 
 //app.get('/users', user.list);
+app.get('/getBitcoinChart',function(req,response){
+	//http://api.bitcoincharts.com/v1/markets.json
+	request({
+	    url: 'http://api.bitcoincharts.com/v1/markets.json',
+	    json: true
+	}, function (error, res, body) {
 
+	    if (!error && res.statusCode === 200) {
+	        console.log(body); // Print the json response
+	        response.send(body);
+	    }
+	})
+});
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

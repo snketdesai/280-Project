@@ -9,19 +9,38 @@ function getData()
 //alert("15");
 	$.ajax({
     type: "GET",
-    url: "http://api.bitcoincharts.com/v1/markets.json?callback=?",
-    dataType: 'jsonp',
+    url: "/getBitcoinChart",
+    dataType: 'json',
     async: false,
     crossDomain : true,
-  //  jsonpCallback : 'fnsuccesscalllback',
-    jsonp : false,
+   // jsonpCallback: 'apiStatus',
+    //jsonp : 'callback',
     success: function(data){
-      //    alert("ankit");
+         // alert("ankit");
+          //console.log("...");
+    	
     },
-     error: function(status, errorThrown){
-	    console.log(status + " " + errorThrown);
+    //jsonpCallback: 'mycallback',
+     error: function(response,text,err){
+    	 alert(err);
+    	 //var r = jQuery.parseJSON(response.responseText);
+         //alert("Message: " + r.Message);
+         //alert("StackTrace: " + r.StackTrace);
+         //alert("ExceptionType: " + r.ExceptionType);
  	 }
    });
+	
+	function apiStatus()
+	{
+		alert("yes");
+	}
+	/*$.getJSON("http://api.bitcoincharts.com/v1/markets.json?callback=?",
+		    function(data){
+				alert("k");
+		      $.each(data, function(i,item){            
+		        alert(item.x);
+		      });
+		  });*/
 
 }
 
