@@ -219,7 +219,7 @@ function generateChart()
 	        yAxis: {
 	        	
 	            title: {
-	                text: 'Bitcoin Value'
+	                text: 'Market cap'
 	            },
 	            min: 0,
 	            labels: {
@@ -256,7 +256,7 @@ function generateChart()
 
 	        series: [{
 	            type: 'area',
-	            name: 'Bitcoin Value',
+	            name: 'Market cap',
 	            pointInterval: 24 * 3600 * 1000,
 	            pointStart: Date.UTC(2012, 03, 22),
 	            data: [
