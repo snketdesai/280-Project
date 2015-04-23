@@ -38,7 +38,7 @@
                 ui.write(JSON.stringify(e.data), "message", "geo");
             }
             
-            pointData = [e.data['latitude'], e.data['longitude'], values[e.data['ip']] / valueAdjuster];
+            pointData = [e.data['latitude'], e.data['longitude'], (values[e.data['ip']] / valueAdjuster)*3];
             globe.addData(pointData, {format: 'magnitude', name: 'bitcoin', animated: false});
             globe.createPoints();
         });
