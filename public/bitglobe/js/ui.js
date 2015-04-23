@@ -51,11 +51,7 @@ var UI = (function() {
             p.className = style;
         }
         p.textContent = message;
-        if (type == 'geo') {
-          //  append(geo_output, p);
-        } else {
-            //append(ws_output, p);
-        }
+        
     };
 
     return init();

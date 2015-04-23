@@ -8,8 +8,7 @@ var GeoIP = function() {
     var callback;
 
     var init = function() {
-        // Don't make too many requests per second to freegeoip by
-        // maintaining a simple queue we pop at 1000ms intervals
+        
         intervalID = setInterval(unQueue, 1000);
         return {
             'queue': ipQueue
@@ -17,7 +16,7 @@ var GeoIP = function() {
     };
 
     var xhrCallback = function(data) {
-        // FIXME: error handling
+        
         var data = JSON.parse(this.responseText);
         dispatchGeoEvent(data);
         data.cached = true;
@@ -40,7 +39,7 @@ var GeoIP = function() {
         }
 
         if (ipCache[ip]) {
-            // Directly dispatch geo event if we found the ip in the cache
+            
             dispatchGeoEvent(ipCache[ip]);
         }
 

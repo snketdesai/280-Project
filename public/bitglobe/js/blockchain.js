@@ -2,8 +2,7 @@
 
 var BlockChain = function() {
     var ws;
-    // FIXME: handle error on first Uri, fallback to the second one
-    //var wsUri = 'ws://ws.blockchain.info/inv';
+    
     var wsUri = 'ws://ws.blockchain.info/inv';
 
     var init = function() {           
