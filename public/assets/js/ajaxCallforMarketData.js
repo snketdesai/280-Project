@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
 	getData();
+	//setInterval(highlightData, 2000);
 });
 
 
@@ -22,6 +23,13 @@ function getData()
    });
 
 }
+
+function highlightData(){
+//$( ".content-panel" ).toggle( "highlight" );
+$(".content-panel").effect( "highlight", {color:"red"}, 1000 );
+
+}
+
 
 
 function fillTable(data)
